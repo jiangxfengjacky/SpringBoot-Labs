@@ -3,9 +3,7 @@ package cn.iocoder.springcloud.labx03.feigndemo.consumer.controller;
 import cn.iocoder.springcloud.labx03.feigndemo.consumer.dto.DemoDTO;
 import cn.iocoder.springcloud.labx03.feigndemo.consumer.feign.DemoProviderFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,8 +38,8 @@ public class ConsumerController {
         }
     }
 
-    @GetMapping("/test_post_demo")
-    public DemoDTO testPostDemo(DemoDTO demoDTO) {
+    @PostMapping("/test_post_demo")
+    public DemoDTO testPostDemo(@RequestBody DemoDTO demoDTO) {
        return demoProviderFeignClient.postDemo(demoDTO);
     }
 
